@@ -1,0 +1,37 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 5px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+      a {
+        color: #409492;
+        font-size: 18px;
+      }
+  }
+
+  .header__link-basket {
+    font-size: 30px;
+    color: #409492;
+  }
+}
+
+.main {
+  padding-top: 55px;
+}
+
+.footer {
+
+}

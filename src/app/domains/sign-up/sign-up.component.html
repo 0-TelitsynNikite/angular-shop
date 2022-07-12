@@ -1,0 +1,28 @@
+<section class="sign-in-section">
+  <div class="sign-in-form__wrapper">
+
+    <form class="sign-in-form" [formGroup]="singUpForm" (ngSubmit)="log(singUpForm)">
+
+      <app-main-heading [title]="'Get Started'"></app-main-heading>
+
+      <p>Already have an Account? <a class="sign-in-form__span" routerLink="/sign-in">Sign-in</a></p>
+
+      <div class="form-group">
+        <label for="nameId">Name</label>
+        <input type="text" id="nameId" formControlName="userName">
+      </div>
+
+      <div class="form-group">
+        <label for="emailId">Email</label>
+        <input type="text" id="emailId" formControlName="userEmail">
+      </div>
+
+      <div class="form-group">
+        <label for="phoneId">Phone</label>
+        <input type="text" id="phoneId" formControlName="userPhone">
+      </div>
+
+      <button>Sign up</button>
+    </form>
+  </div>
+</section>
