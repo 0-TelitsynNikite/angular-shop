@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from "@angular/forms";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit {
   signInForm: FormGroup
+  isSignedIn = false
 
-  constructor() {
+  constructor(public auth: AuthService) {
     this.signInForm = new FormGroup({
-      'userName': new FormControl('', Validators.required),
+      'userPassword': new FormControl('', Validators.required),
       'userEmail': new FormControl('', [
         Validators.required,
         Validators.email
@@ -19,8 +21,26 @@ export class SignInComponent {
     })
   }
 
+  ngOnInit() {
+    if (localStorage.getItem('user') !== null) {
+      this.isSignedIn = true
+    } else {
+      this.isSignedIn = false
+    }
+  }
+
+  async onSignIn(data: any) {
+    await this.auth.signIn(data.value.userEmail, data.value.userPassword)
+
+    if (this.auth.isLoggedIn) {
+      this.isSignedIn = true
+    }
+
+    console.log(this.isSignedIn)
+  }
+
   log(data: any) {
-    console.log(data.value)
+    console.log(data.value.userName)
   }
 
 }

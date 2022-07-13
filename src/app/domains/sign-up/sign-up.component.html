@@ -1,7 +1,7 @@
 <section class="sign-in-section">
   <div class="sign-in-form__wrapper">
 
-    <form class="sign-in-form" [formGroup]="singUpForm" (ngSubmit)="log(singUpForm)">
+    <form class="sign-in-form" [formGroup]="singUpForm" (ngSubmit)="onSignUp(singUpForm)">
 
       <app-main-heading [title]="'Get Started'"></app-main-heading>
 
@@ -10,19 +10,28 @@
       <div class="form-group">
         <label for="nameId">Name</label>
         <input type="text" id="nameId" formControlName="userName">
+        <div class="validation" *ngIf="singUpForm.controls['userName'].invalid && singUpForm.controls['userName'].touched">
+          Не указано имя
+        </div>
       </div>
 
       <div class="form-group">
         <label for="emailId">Email</label>
         <input type="text" id="emailId" formControlName="userEmail">
+        <div class="validation" *ngIf="singUpForm.controls['userEmail'].invalid && singUpForm.controls['userEmail'].touched">
+          Не указано email
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="phoneId">Phone</label>
-        <input type="text" id="phoneId" formControlName="userPhone">
+        <label for="passwordId">Password</label>
+        <input type="text" id="passwordId" formControlName="userPassword">
+        <div class="validation" *ngIf="singUpForm.controls['userPassword'].invalid && singUpForm.controls['userPassword'].touched">
+          Не указано номер
+        </div>
       </div>
 
-      <button>Sign up</button>
+      <button [disabled]="singUpForm.invalid">Sign up</button>
     </form>
   </div>
 </section>

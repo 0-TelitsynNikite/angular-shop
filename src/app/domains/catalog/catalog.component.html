@@ -1,1 +1,14 @@
-<p>catalog works!</p>
+<section class="catalog-section">
+  <app-main-heading [title]="'Our Products'"></app-main-heading>
+  <ul class="catalog-list">
+    <li class="catalog-list__item" *ngFor="let product of products">
+      <img class="catalog-img" src={{product.img}} alt="img">
+      <div class="catalog-wrapper">
+        <i class="bi bi-heart icon"></i>
+        <i class="bi bi-bag-plus icon"></i>
+      </div>
+      <span class="catalog-span catalog-span-1">{{product.title}}</span>
+      <span class="catalog-span catalog-span-2">{{product.price}}р</span>
+    </li>
+  </ul>
+</section>

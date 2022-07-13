@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductService} from "../../services/products.service";
+import {map} from "rxjs";
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
+  providers: [ProductService]
 })
-export class CatalogComponent implements OnInit {
+export class CatalogComponent implements OnInit{
+  products: any = []
 
-  constructor() { }
+  constructor(private catalog: ProductService) { }
 
-  ngOnInit(): void {
+  log() {
+    console.log(this.products)
+  }
+
+  ngOnInit() {
+    this.catalog.getProducts()
+      .pipe(
+        map(data => Object.values(data))
+      )
+      .subscribe(data => this.products = data)
   }
 
 }
