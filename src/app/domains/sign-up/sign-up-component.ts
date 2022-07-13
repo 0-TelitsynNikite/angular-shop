@@ -11,7 +11,7 @@ export class SignUpComponent implements OnInit {
   singUpForm: FormGroup
   isSignedIn = false
 
-  constructor(public auth: AuthService) {
+  constructor(private auth: AuthService) {
     this.singUpForm = new FormGroup({
       'userName': new FormControl('', Validators.required),
       'userEmail': new FormControl('', [
@@ -36,6 +36,8 @@ export class SignUpComponent implements OnInit {
     if (this.auth.isLoggedIn) {
       this.isSignedIn = true
     }
+
+    this.singUpForm.reset()
   }
 
   log(data: any) {

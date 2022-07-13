@@ -11,7 +11,7 @@ export class SignInComponent implements OnInit {
   signInForm: FormGroup
   isSignedIn = false
 
-  constructor(public auth: AuthService) {
+  constructor(private auth: AuthService) {
     this.signInForm = new FormGroup({
       'userPassword': new FormControl('', Validators.required),
       'userEmail': new FormControl('', [
@@ -36,7 +36,7 @@ export class SignInComponent implements OnInit {
       this.isSignedIn = true
     }
 
-    console.log(this.isSignedIn)
+    this.signInForm.reset()
   }
 
   log(data: any) {
