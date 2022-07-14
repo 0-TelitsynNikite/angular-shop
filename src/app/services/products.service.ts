@@ -1,16 +1,17 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpInterceptor} from "@angular/common/http";
 
 @Injectable()
 export class ProductService {
-  api = 'https://angular-9d2e6-default-rtdb.firebaseio.com/products.json'
+  api = 'https://angular-9d2e6-default-rtdb.firebaseio.com/products'
+
   constructor(private http: HttpClient) { }
 
   getProducts() {
-    return this.http.get(this.api)
+    return this.http.get(`${this.api}.json`)
   }
 
-  addProduct(url: string, task: any) {
-    this.http.post(`${this.api}${url}.json`, task).subscribe()
+  addProduct(task: any) {
+    this.http.post(`${this.api}.json`, task).subscribe()
   }
 }

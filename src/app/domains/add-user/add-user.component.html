@@ -1,0 +1,45 @@
+<section class="form-section">
+  <app-main-heading [title]="'Add product'"></app-main-heading>
+
+  <form class="add-user-form" [formGroup]="addProductsForm" (submit)="addUser(addProductsForm)">
+
+    <div class="form-group">
+      <label for="typeId">Type</label>
+      <input type="text" id="typeId" formControlName="productType" placeholder="Type...">
+
+      <div class="validation" *ngIf="addProductsForm.controls['productType'].invalid && addProductsForm.controls['productType'].touched">
+         Невалидное имя
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="typeId">Title</label>
+      <input type="text" formControlName="productTitle" placeholder="Title...">
+
+      <div class="validation" *ngIf="addProductsForm.controls['productTitle'].invalid && addProductsForm.controls['productTitle'].touched">
+          Невалидное имя
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="typeId">Price</label>
+      <input type="number" formControlName="productPrice" placeholder="Price...">
+
+      <div class="validation" *ngIf="addProductsForm.controls['productPrice'].invalid && addProductsForm.controls['productPrice'].touched">
+          Невалидное имя
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="typeId">Image</label>
+      <input type="text" formControlName="productImg" placeholder="Image...">
+
+      <div class="validation" *ngIf="addProductsForm.controls['productImg'].invalid && addProductsForm.controls['productImg'].touched">
+          Невалидное имя
+      </div>
+    </div>
+
+    <button>Add product</button>
+  </form>
+
+</section>

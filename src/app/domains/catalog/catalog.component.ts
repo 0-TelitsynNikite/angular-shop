@@ -5,17 +5,12 @@ import {map} from "rxjs";
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss'],
-  providers: [ProductService]
+  styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit{
   products: any = []
 
   constructor(private catalog: ProductService) { }
-
-  log() {
-    console.log(this.products)
-  }
 
   ngOnInit() {
     this.catalog.getProducts()

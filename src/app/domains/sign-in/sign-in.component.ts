@@ -7,6 +7,7 @@ import {AuthService} from "../../services/auth.service";
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
+
 export class SignInComponent implements OnInit {
   signInForm: FormGroup
   isSignedIn = false
@@ -22,11 +23,7 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (localStorage.getItem('user') !== null) {
-      this.isSignedIn = true
-    } else {
-      this.isSignedIn = false
-    }
+    this.isSignedIn = !!localStorage.getItem('user')
   }
 
   async onSignIn(data: any) {
@@ -38,9 +35,4 @@ export class SignInComponent implements OnInit {
 
     this.signInForm.reset()
   }
-
-  log(data: any) {
-    console.log(data.value.userName)
-  }
-
 }
